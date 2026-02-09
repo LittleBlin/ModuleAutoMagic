@@ -1,6 +1,3 @@
-# ScriptKiddie_Module3
-Blyat.
-
 NOTES:
 
 [root@hq-rtr ~]# cat /etc/frr/frr.conf 
