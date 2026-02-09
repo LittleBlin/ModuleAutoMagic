@@ -1,0 +1,28 @@
+# ScriptKiddie_Module3
+Blyat.
+
+NOTES:
+
+[root@hq-rtr ~]# cat /etc/frr/frr.conf 
+interface tun0
+ ip ospf area 0.0.0.0
+ ip ospf authentication
+ ip ospf authentication-key P@$$word
+ no ip ospf passive
+exit
+!
+interface vlan100
+ ip ospf area 0.0.0.0
+exit
+!
+interface vlan200
+ ip ospf area 0.0.0.0
+exit
+!
+interface vlan999
+ ip ospf area 0.0.0.0
+exit
+!
+router ospf
+ passive-interface default
+exit
