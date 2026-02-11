@@ -34,7 +34,7 @@ echo "[INF] Setting up rsyslog"
 sed -i 's/#module(load="imjournal")/module(load="imjournal")/g' /etc/rsyslog.d/00_common.conf
 sed -i 's/#module(load="imuxsock")/module(load="imuxsock")/g' /etc/rsyslog.d/00_common.conf
 echo -e "ForwardToSyslog=yes\nMaxLevelSyslog=warning" >> /etc/systemd/journald.conf
-echo "*.warn @"$hqsrvip" > /etc/rsyslog.d/10_to_server.conf
+echo '*.warn @'$hqsrvip > /etc/rsyslog.d/10_to_server.conf
 
 echo "[INF] Enable prometheus"
 systemctl enable --now prometheus-node_exporter
@@ -65,5 +65,8 @@ cat PC-INFO/hq-cli.yml
 echo "[INF] Setting up DNS samba"
 samba-tool dns add br-srv.au-team.irpo au-team.irpo mon CNAME hq-srv.au-team.irpo -U Administrator
 samba-tool dns query br-srv.au-team.irpo au-team.irpo mon CNAME -U administrator
+
+echo "[WARN] If css styling is lost after certificate, connect to docker image and replace one line"
+echo "To enter docker image: docker exec -it testapp ash"
 
 echo "[DONE] Delo Sdelano"

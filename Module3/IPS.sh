@@ -68,3 +68,4 @@ server {
 EOF
 systemctl restart nginx
 echo "[WARN] Continue on HQ-SRV."
+echo "[DONE] Delo Sdelano"
