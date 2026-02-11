@@ -35,6 +35,7 @@ sed -i 's/#module(load="imjournal")/module(load="imjournal")/g' /etc/rsyslog.d/0
 sed -i 's/#module(load="imuxsock")/module(load="imuxsock")/g' /etc/rsyslog.d/00_common.conf
 echo -e "ForwardToSyslog=yes\nMaxLevelSyslog=warning" >> /etc/systemd/journald.conf
 echo '*.warn @'$hqsrvip > /etc/rsyslog.d/10_to_server.conf
+systemctl enable --now rsyslog
 
 echo "[INF] Enable prometheus"
 systemctl enable --now prometheus-node_exporter
