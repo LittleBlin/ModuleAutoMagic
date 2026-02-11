@@ -10,7 +10,7 @@ apt-get install -y rsyslog prometheus-node_exporter
 
 echo "[INF] Mounting CD-ROM sr0"
 mount /dev/sr0 /mnt
-echo "[INF] Importing user list
+echo "[INF] Importing user list"
 lefile="/mnt/Users.csv"
 
 awk -F ';' 'NR>1 {print $5}' "$lefile" | sort | uniq | while read ou;
