@@ -3,6 +3,7 @@
 # IP Addresses
 ispip="172.16.1.1"
 hqcliip="192.168.200.2"
+
 echo "[INF] Updating apt"
 apt-get update
 echo "[INF] Installing dependencies"
@@ -29,4 +30,5 @@ scp docker.au-team.irpo.cer root@$ispip:~/
 echo "[WARN] Continue on ISP and return after."
 read -p "Press enter to continue..."
 scp ca.cer user@$hqcliip:~/
+
 echo "[WARN] Launch HQ-CLI.sh script in HQ-CLI server"
