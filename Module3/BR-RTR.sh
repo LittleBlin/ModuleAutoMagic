@@ -14,8 +14,6 @@ case $choice in
 esac
 
 function firstinstall {
-
-function firstinstall {
 echo "[INF] Updating apt"
 apt-get update
 echo "[INF] Installing dependencies"
@@ -24,7 +22,7 @@ apt-get install -y openvpn
 echo "[INF] Setting up openvpn"
 cat > /etc/openvpn/keys/static.key
 chmod og-rw /etc/openvpn/keys/static.key
-cat  << EOF > /etc/openvpn/client/tun0.conf
+cat << EOF > /etc/openvpn/client/tun0.conf
 remote 172.16.1.10
 dev tun0
     cipher AES-256-CBC
@@ -52,4 +50,5 @@ echo '*.warn @'$hqsrvip > /etc/rsyslog.d/10_to_server.conf
 systemctl enable --now rsyslog
 
 echo "[DONE] Delo Sdelano"
+
 }
