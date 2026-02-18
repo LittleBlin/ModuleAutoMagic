@@ -7,7 +7,7 @@ hqcliip="192.168.200.2"
 echo "[INF] Updating apt"
 apt-get update
 echo "[INF] Installing dependencies"
-apt-get install -y openssl-gost-engine cups cups-pdf logrotate rsyslogd prometheus grafana prometheus-node_exporter fail2ban python3-module-systemd
+apt-get install -y openssl-gost-engine cups cups-pdf logrotate rsyslogd prometheus grafana prometheus-node_exporter fail2ban python3-module-systemd sshpass
 control openssl-gost enabled
 
 echo "[INF] Setting up certificates and other ssl stuff"
@@ -23,10 +23,10 @@ echo "[WARN] Launch the ISP.sh script in ISP server before continuing!"
 read -p "Press enter to continue..."
 
 echo "[INF] Copying files to ISP"
-scp web.au-team.irpo.key root@$ispip:~/
-scp web.au-team.irpo.cer root@$ispip:~/
-scp docker.au-team.irpo.key root@$ispip:~/
-scp docker.au-team.irpo.cer root@$ispip:~/
+sshpass -p toor scp web.au-team.irpo.key root@$ispip:~/
+sshpass -p toor scp web.au-team.irpo.cer root@$ispip:~/
+sshpass -p toor scp docker.au-team.irpo.key root@$ispip:~/
+sshpass -p toor scp docker.au-team.irpo.cer root@$ispip:~/
 echo "[WARN] Continue on ISP and return after."
 echo "[INF] Copyinf certificate to HQ-CLI"
 read -p "Press enter to continue..."
@@ -181,5 +181,6 @@ fail2ban-client status sshd
 #
 #control mysqld server
 #systemctl restart mysqld
+
 
 echo "[DONE] Delo Sdelano"
