@@ -30,7 +30,7 @@ sshpass -p toor scp docker.au-team.irpo.cer root@$ispip:~/
 echo "[WARN] Continue on ISP and return after."
 echo "[INF] Copyinf certificate to HQ-CLI"
 read -p "Press enter to continue..."
-scp ca.cer user@$hqcliip:~/
+sshpass -p resu scp ca.cer user@$hqcliip:~/
 
 echo "[INF] Setting up rsyslog"
 sed -i 's/#module(load="imjournal")/module(load="imjournal")/g' /etc/rsyslog.d/00_common.conf
@@ -184,3 +184,4 @@ fail2ban-client status sshd
 
 
 echo "[DONE] Delo Sdelano"
+
