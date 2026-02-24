@@ -18,12 +18,12 @@ function firstinstall {
 echo "[INF] Updating apt"
 apt-get update
 echo "[INF] Installing dependencies"
-apt-get install -y openvpn
+apt-get install -y openvpn sshpass
 
 echo "[INF] Setting up openvpn"
 openvpn --genkey secret /etc/openvpn/keys/static.key
 chmod og-rw /etc/openvpn/keys/static.key
-scp /etc/openvpn/keys/static.key net_admin@$brrtrip:~
+sshpass -p P@ssw0rd scp /etc/openvpn/keys/static.key net_admin@$brrtrip:~
 cat << EOF > /etc/openvpn/server/tun0.conf
 dev tun0
     cipher AES-256-CBC
@@ -52,4 +52,5 @@ echo '*.warn @'$hqsrvip > /etc/rsyslog.d/10_to_server.conf
 systemctl enable --now rsyslog
 
 echo "[DONE] Delo Sdelano"
+
 }
