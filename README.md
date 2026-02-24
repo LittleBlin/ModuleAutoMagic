@@ -1,7 +1,5 @@
 NOTES:
 
-Use sshpass package to automatically pass password into scp/ssh
-
 [root@hq-rtr ~]# cat /etc/frr/frr.conf 
 interface tun0
  ip ospf area 0.0.0.0
